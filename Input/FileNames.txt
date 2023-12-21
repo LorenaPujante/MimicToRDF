@@ -1,0 +1,16 @@
+
+Input files must have the following names:
+
+ - Bed_Dummy.csv
+ - deaths.csv
+ - episodes.csv
+ - hospitalizationUnits.csv
+ - microorganisms.csv
+ - patients.csv
+ - services.csv
+ - servsEvents.csv
+ - testsMicro.csv
+ - transfers_loc.csv
+ - transfers_services.csv
+ - wardsAndRooms.csv
+ - wardsByType.csv
