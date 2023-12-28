@@ -14,3 +14,7 @@ Input files must have the following names:
  - transfers_services.csv
  - wardsAndRooms.csv
  - wardsByType.csv
+ 
+ 
+Source from services.csv is https://mimic.mit.edu/docs/iii/tables/services/
+ 
