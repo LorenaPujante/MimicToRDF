@@ -1,0 +1,21 @@
+SERV_ID,SERVICE,SERV_DESC,SURG_MED_OTHER,UH_ID
+1,CMED,Cardiac Medical,Med,101
+2,CSURG,Cardiac Surgery,Surg,102
+3,DENT,Dental,Med,103
+4,ENT,Ear-Nose-Throat,Med,104
+5,GU,Genitourinary,Med,105
+6,GYN,Gynecological,Med,106
+7,MED,Medical,Med,107
+8,NB,Newborn,Other,108
+9,NBB,Newborn Baby,Other,109
+10,NMED,Neurologic Medical,Med,110
+11,NSURG,Neurologic Surgery,Surg,111
+12,OBS,Obstetrics,Other,112
+13,ORTHO,Orthopedic Surgery,Surg,113
+14,OMED,Orthopedic Medical,Med,114
+15,PSURG,Plastic Surgery,Surg,115
+16,PSYCH,Psychiatric,Med,116
+17,SURG,Surgical,Surg,117
+18,TRAUM,Trauma,Surg,118
+19,TSURG,Thoracic Surgery,Surg,119
+20,VSURG,Vascular Surgery,Surg,120
