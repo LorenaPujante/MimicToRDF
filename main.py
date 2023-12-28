@@ -44,11 +44,11 @@ def generateSolution(minYearN, maxYearN, minYear, maxYear, maxEvents):
     printCSV(dicServices, dicHUs, dicCorridors, dicRooms, dicBeds, dicPatients, dicMicroorganisms)
 
     print(" ... NT")
-    dirNT = ".\\OutputNT"
+    dirNT = ".\\OutputRDF"
     dirClasses_NT, dirRels_NT, minYearN_2digits, maxYearN_2digits, minYear_2digits, maxYear_2digits, maxEvents_div1000 = setFolderOutputNT(dirNT, minYearN, maxYearN, minYear, maxYear, maxEvents)
     printNT(dicServices, dicHUs, dicCorridors, dicRooms, dicBeds, dicPatients, dicMicroorganisms)
 
-    print(" ... NT_star")
+    print(" ... RDF_star")
     dirNT_star = ".\\OutputNT_star"
     dirClasses_NTstar, dirRels_NTstar, minYearN_2digits, maxYearN_2digits, minYear_2digits, maxYear_2digits, maxEvents_div1000 = setFolderOutputNT_star(dirNT_star, minYearN, maxYearN, minYear, maxYear, maxEvents)
     printNT_star(dicServices, dicHUs, dicCorridors, dicRooms, dicBeds, dicPatients, dicMicroorganisms)

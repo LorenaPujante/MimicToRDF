@@ -1,7 +1,7 @@
 import math
 
 from classes import *
-from variablesFilesNormYear import *
+from variablesFiles import *
 
 
 ############

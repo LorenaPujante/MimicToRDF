@@ -1,7 +1,7 @@
 import os
 from classes import *
 from weightsLocsHierarchy import weights
-from variablesFilesNormYear import getTwoLastDigitsNumber
+from variablesFiles import getTwoLastDigitsNumber
 from variablesWriter import prefixes_nt, nameFiles_Classes, nameFiles_Rels
 
 

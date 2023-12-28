@@ -1,7 +1,7 @@
 
 import os
 from classes import *
-from variablesFilesNormYear import getTwoLastDigitsNumber
+from variablesFiles import getTwoLastDigitsNumber
 from parserPhysicalHospital import splitIdRoom
 
 

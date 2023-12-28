@@ -1,6 +1,6 @@
 from datetime import datetime
 from classes import Patient
-from variablesFilesNormYear import *
+from variablesFiles import *
 
 
 def parsePatients():

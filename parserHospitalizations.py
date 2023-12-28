@@ -2,7 +2,8 @@
 from datetime import datetime, timedelta
 
 from classes import Event, EventType
-from variablesFilesNormYear import *
+from variablesFiles import *
+from auxFunctionsNormDate import *
 from alphabets import abcCap
 from dateNormalizer import isLeapyear
 from durationCalculator import *

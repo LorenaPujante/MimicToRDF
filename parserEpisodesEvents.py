@@ -2,7 +2,8 @@
 from datetime import datetime
 
 from classes import *
-from variablesFilesNormYear import *
+from variablesFiles import *
+from auxFunctionsNormDate import *
 from parserHospitalizations import parseHospitalizations
 from trimEvents import getEventsPerMonth, reachMaxEvents
 

@@ -2,7 +2,8 @@ import os
 import math
 from datetime import datetime, timedelta
 
-from variablesFilesNormYear import *
+from variablesFiles import *
+from auxFunctionsNormDate import *
 
 
 #                           A                        B
