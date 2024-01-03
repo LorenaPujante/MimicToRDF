@@ -11,7 +11,7 @@ from eventDistributor import distributeEvents
 from writerCSV import setFolderOutputCSV, printCSV
 from writerNT import setFolderOutputNT, printNT
 from writerNT_star import setFolderOutputNT_star, printNT_star
-from writerResumes import setFolderSummary, writeResumes
+from writerSummary import setFolderSummary, writeSummarys
 from writerUnion import unionFiles
 
 
@@ -64,7 +64,7 @@ def generateSolution(minYearN, maxYearN, minYear, maxYear, maxEvents):
     listsRooms.append(listMix)
     listsRooms.append(listMed)
     listsRooms.append(listOther)
-    writeResumes(dicPatients, dicCorridors, dicRooms, listsRooms, minYearN, maxYearN, minYear, maxYear, maxEvents)
+    writeSummarys(dicPatients, dicCorridors, dicRooms, listsRooms, minYearN, maxYearN, minYear, maxYear, maxEvents)
 
 
 
