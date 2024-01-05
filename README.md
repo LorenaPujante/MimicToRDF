@@ -59,6 +59,8 @@ For example, if we execute: `generateSolution(2000, 2025, 2010, 2010, 125000)`, 
 
 When executing the program, the names of some folders and files of the result have a legend with the configuration parameters at the end. In the previous example, one of the result folders would be: `OutputRDF/Relations_00-25__10-10__125.nt`
 
+In the file _main.py_, the function `main()` has a set of tests for executing the program with different configuration parameters. These parameters can be changed in this function.
+
 
 ## 5. Outcomes
 After running the program, the following folders are created:
@@ -70,7 +72,4 @@ After running the program, the following folders are created:
 	- Nodes and edges are in different folders: `OutputRDF_star/Classes.*` (nodes) and `OutputRDF_star/CSV.*` (edges). Each class of nodes and edges is in a separate file. Inside each folder, there also is a file with the union of all the nodes (`/Classes.*/Classes_complete.*.nt`) and the union of all the edges (`OutputRDF_star/Relations.*/Relations_complete.*.ttl`), respectively. Finally, the file `OutputRDF_star/data_complete.*.ttl` contains the nodes and edges' union.
 
 Repeated runs will replace existing files.
-
-
-
 
