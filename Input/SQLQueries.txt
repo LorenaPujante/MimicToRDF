@@ -1,0 +1,113 @@
+
+ #1. transfers_loc.csv
+
+SELECT ROW_ID, SUBJECT_ID, HADM_ID, ICUSTAY_ID, CURR_CAREUNIT, CURR_WARDID, INTIME, OUTTIME 
+FROM `transfers` 
+WHERE EVENTTYPE<>'discharge' 
+	AND OUTTIME IS NOT NULL
+	AND HADM_ID NOT IN (SELECT HADM_ID
+						FROM `admissions`
+						WHERE ADMISSION_TYPE='NEWBORN')
+ORDER BY SUBJECT_ID,HADM_ID,ROW_ID
+
+
+ #2. transfers_services.csv
+SELECT ROW_ID, SUBJECT_ID, HADM_ID, TRANSFERTIME, CURR_SERVICE 
+FROM `services`
+WHERE HADM_ID NOT IN (SELECT HADM_ID
+                   	  FROM `admissions`
+                      WHERE ADMISSION_TYPE='NEWBORN') 
+ORDER BY SUBJECT_ID, HADM_ID, TRANSFERTIME
+
+
+ # 3. episodes.csv
+SELECT SUBJECT_ID,HADM_ID,ADMITTIME,DISCHTIME,ADMISSION_TYPE 
+FROM `admissions` 
+WHERE ADMISSION_TYPE!='NEWBORN' 
+ORDER BY SUBJECT_ID,HADM_ID,ADMITTIME
+
+
+ #4. testsMicro.csv
+SELECT m.ROW_ID AS ROW_ID,m.HADM_ID,m.ORG_ITEMID, CAST(m.CHARTDATE AS datetime) AS CHARTTIME, CASE WHEN m.INTERPRETATION='R' THEN 1 ELSE 0 END AS INTERPRETATION 
+FROM microbiologyevents m, admissions a 
+WHERE m.HADM_ID=a.HADM_ID 
+	AND a.ADMISSION_TYPE!='NEWBORN' 
+	AND m.CHARTTIME IS NULL 
+	AND m.ORG_NAME IS NOT NULL 
+	AND m.ORG_ITEMID IS NOT NULL 
+UNION 
+SELECT m.ROW_ID AS ROW_ID,m.HADM_ID,m.ORG_ITEMID,m.CHARTTIME, CASE WHEN m.INTERPRETATION='R' THEN 1 ELSE 0 END AS INTERPRETATION 
+FROM microbiologyevents m, admissions a 
+WHERE m.HADM_ID=a.HADM_ID 
+	AND a.ADMISSION_TYPE!='NEWBORN' 
+	AND m.CHARTTIME IS NOT NULL 
+	AND m.ORG_NAME IS NOT NULL 
+	AND m.ORG_ITEMID IS NOT NULL
+
+
+ #5. microorganisms.csv
+SELECT DISTINCT ORG_ITEMID, CONCAT('"', ORG_NAME, '"') AS ORG_NAME  
+FROM `microbiologyevents`
+WHERE ORG_ITEMID IS NOT NULL
+	
+	
+ #6. deaths.csv
+SELECT ROW_ID,SUBJECT_ID,HADM_ID,DEATHTIME 
+FROM `admissions` 
+WHERE DEATHTIME IS NOT NULL 
+	AND ADMISSION_TYPE!='NEWBORN' 
+	
+	
+ #7. patients.csv
+SELECT SUBJECT_ID,GENDER,DOB,EXPIRE_FLAG 
+FROM `patient` 
+WHERE SUBJECT_ID NOT IN (SELECT SUBJECT_ID
+                         FROM `admissions`
+                         WHERE ADMISSION_TYPE='NEWBORN')
+ORDER BY SUBJECT_ID
+
+
+ #8. servsEvents.csv
+SELECT CURR_SERVICE AS nameServ, COUNT(*) AS numEvents
+FROM `services` 
+GROUP BY CURR_SERVICE
+ORDER BY CURR_SERVICE
+
+	* Add a new column as the first column with the name: idServ
+		The value of this column will be the same than the column 'SERV_ID' in services.csv
+
+
+ #9. wardsAndRooms.csv
+SELECT DISTINCT CURR_WARDID 
+FROM `transfers` 
+WHERE CURR_WARDID IS NOT NULL 
+ORDER BY CURR_WARDID 
+
+	* This query returns the values for the columns 'description' and 'id' from the file wardsAndRooms.csv that are with an *
+		You just have to replace the * for the number of the corresponding row
+		For example:
+			The first row (after the heading with the titles) will be change for: ROOM_2,2r,91,10
+
+
+ #10. wardsByType.csv
+SELECT DISTINCT CURR_WARDID 
+FROM `transfers` 
+WHERE CURR_WARDID IS NOT NULL 
+ORDER BY CURR_WARDID
+
+	* This query returns the values for the column 'idWard' from the file wardsByType.csv that are with an *
+		You just have to replace the * for the number of the corresponding row
+		For example:
+			The first row (after the heading with the titles) will be change for: 2r,Surg
+
+
+
+
+
+
+
+
+
+						 
+	
+ 
