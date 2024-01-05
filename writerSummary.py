@@ -6,7 +6,7 @@ from parserPhysicalHospital import splitIdRoom
 
 
 ##################
-# INICIALIZACION #
+# INITIALIZATION #
 ##################
 
 def setFolderSummary(folder):
@@ -43,35 +43,27 @@ def writeSummaryCorridors(file, dicCorridors):
 
     file.write("\n\n\t- CORRIDORS\n")
 
-    nSurg = 0
     listSurg = []
-    nMix = 0
     listMix = []
-    nMed = 0
     listMed = []
-    nOther = 0
-    listOther = []
+    listNeo = []
 
     for c in dicCorridors.values():
         if 'Surgical' in c.description:
-            nSurg += 1
             listSurg.append(c.id)
         elif 'Mixed' in c.description:
-            nMix += 1
             listMix.append(c.id)
         elif 'Medical' in c.description:
-            nMed += 1
             listMed.append(c.id)
         elif 'Neonatal' in c.description:
-            nOther += 1
-            listOther.append(c.id)
+            listNeo.append(c.id)
 
     file.write("\nTOTAL: {} Corridors\n".format(len(dicCorridors)))
 
     file.write("\nSURGICAL ({}):\t{}".format(len(listSurg), listSurg))
     file.write("\nMIX ({}):\t{}".format(len(listMix), listMix))
     file.write("\nMEDICAL ({}):\t{}".format(len(listMed), listMed))
-    file.write("\nOTHER ({}):\t{}\n".format(len(listOther), listOther))
+    file.write("\nNEONATAL ({}):\t{}\n".format(len(listNeo), listNeo))
 
 
 def writeSummaryRooms(file, listsRooms):
@@ -81,15 +73,15 @@ def writeSummaryRooms(file, listsRooms):
     listSurg = listsRooms[0]
     listMix = listsRooms[1]
     listMed = listsRooms[2]
-    listOther = listsRooms[3]
+    listNeo = listsRooms[3]
 
-    totalRooms = len(listSurg) + len(listMix) + len(listMed) + len(listOther)
+    totalRooms = len(listSurg) + len(listMix) + len(listMed) + len(listNeo)
     file.write("\nTOTAL: {} Rooms\n".format(totalRooms))
 
     file.write("\nSURGICAL ({}):\t{}".format(len(listSurg), listSurg))
     file.write("\nMIX ({}):\t{}".format(len(listMix), listMix))
     file.write("\nMEDICAL ({}):\t{}".format(len(listMed), listMed))
-    file.write("\nOTHER ({}):\t{}\n".format(len(listOther), listOther))
+    file.write("\nNEONATAL ({}):\t{}\n".format(len(listNeo), listNeo))
 
 
 def writeSummaryBeds(file, listsRooms, dicRooms):
@@ -135,17 +127,17 @@ def writeSummaryBeds(file, listsRooms, dicRooms):
     file.write(toWrite) 
 
     toWrite = ""
-    nBedsOther = 0
+    nBedsNeo = 0
     for idRoom in listOther:
         idWard, numRoom = splitIdRoom(idRoom) 
         room = dicRooms[idWard][numRoom]
         nBeds = len(room.beds)
         toWrite += "{}: {} beds\n".format(room.description, nBeds)
-        nBedsOther += nBeds
-    file.write("\nOTHER: {} Beds\n".format(nBedsOther))
+        nBedsNeo += nBeds
+    file.write("\nNEONATAL: {} Beds\n".format(nBedsNeo))
     file.write(toWrite) 
     
-    totalBeds = nBedsSurg + nBedsMix + nBedsMed + nBedsOther
+    totalBeds = nBedsSurg + nBedsMix + nBedsMed + nBedsNeo
     file.write("\nTOTAL: {} Beds".format(totalBeds))
 
 
@@ -163,7 +155,7 @@ def writeSummarys(dicPatients, dicCorridors, dicRooms, listsRooms, minYearN, max
     else:
         maxEvents_div1000 = int(maxEvents/1000)
 
-    nameFile = '\\resumen_{}-{}__{}-{}__{}.txt'.format(minYearN_2digits, maxYearN_2digits, minYear_2digits, maxYear_2digits, maxEvents_div1000)
+    nameFile = '\\summary_{}-{}__{}-{}__{}.txt'.format(minYearN_2digits, maxYearN_2digits, minYear_2digits, maxYear_2digits, maxEvents_div1000)
     fichero = open(folderOutput + nameFile, 'w')
     
     writeSummaryPEE(fichero, dicPatients)
