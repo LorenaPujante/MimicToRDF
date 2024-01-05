@@ -66,10 +66,11 @@ In the file _main.py_, the function `main()` has a set of tests for executing th
 After running the program, the following folders are created:
 - _OutputCSV_: Folder with the nodes and edges of the graph in the form of CSV files.
 	- Nodes and edges are in different folders: `OutputCSV/Classes.*` (nodes) and `OutputCSV/CSV.*` (edges). Each class of nodes and edges is in a separate file.
-- _OutputCSV_: Folder with the nodes and edges of the RDF knowledge graph in the form of N-Triples files.
+- _OutputRDF_: Folder with the nodes and edges of the RDF knowledge graph in the form of N-Triples files.
 	- Nodes and edges are in different folders: `OutputRDF/Classes.*` (nodes) and `OutputRDF/CSV.*` (edges). Each class of nodes and edges is in a separate file. Inside each folder, there also is a file with the union of all the nodes (`OutputRDF/Classes.*/Classes_complete.*.nt`) and the union of all the edges (`OutputRDF/Relations.*/Relations_complete.*.nt`), respectively. Finally, the file `OutputRDF/data_complete.*.nt` contains the nodes and edges' union.
-- _OutputCSV_: Folder with the nodes and edges of the RDF* knowledge graph in the form of N-Triples files (nodes) and Turtle files (edges).
+- _OutputRDF_star_: Folder with the nodes and edges of the RDF* knowledge graph in the form of N-Triples files (nodes) and Turtle files (edges).
 	- Nodes and edges are in different folders: `OutputRDF_star/Classes.*` (nodes) and `OutputRDF_star/CSV.*` (edges). Each class of nodes and edges is in a separate file. Inside each folder, there also is a file with the union of all the nodes (`/Classes.*/Classes_complete.*.nt`) and the union of all the edges (`OutputRDF_star/Relations.*/Relations_complete.*.ttl`), respectively. Finally, the file `OutputRDF_star/data_complete.*.ttl` contains the nodes and edges' union.
+- _OutputSummary_: Folder with a summary of the created hospital layout (_description_ and number of the Corridors, Rooms and Beds) and the number of Episodes and Events.  
 
 Repeated runs will replace existing files.
 
